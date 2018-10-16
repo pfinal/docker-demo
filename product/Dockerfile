@@ -1,3 +1,3 @@
 FROM pfinal/flask
 
-COPY . /work
+COPY ./myapp.py /work/myapp.py

@@ -7,7 +7,7 @@ def home():
     return "product service"
 
 @app.route('/version')
-def create():
+def version():
     return "0.0.1"
 
 @app.route('/list')
