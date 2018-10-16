@@ -2,7 +2,10 @@
 
 switch ($_SERVER['PATH_INFO']) {
 
-    //http://localhost/index.php/login
+    //http://localhost/index.php/
+    case '/':
+        echo 'user service';
+        break;
     case '/login':
         echo 'login success!';
         break;

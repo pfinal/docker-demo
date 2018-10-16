@@ -7,6 +7,10 @@ import (
 )
 
 func configRoutes() {
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        w.Write([]byte("order service"))
+    })
+
 	http.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("1.0.0"))
 	})
