@@ -2,13 +2,13 @@ version: '3.4'
 services:
 
   user:
-    image: hub/user
+    image: hub:5000/user
 
   product:
-    image: hub/product
+    image: hub:5000/product
 
   order:
-    image: hub/order
+    image: hub:5000/order
 
   adminer:
     image: adminer
