@@ -1,0 +1,70 @@
+version: '3.4'
+services:
+
+  kong-database:
+    image: postgres:9.6
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - POSTGRES_PASSWORD=kong
+    volumes:
+      - $PWD/kongdata:/var/lib/postgresql/data
+    container_name: kong-database
+
+  kong:
+    image: goodraincloudframeworks/kong
+    restart: always
+    links:
+      - kong-database:kong-database
+    ports:
+      - 8000:8000  # http
+      - 8443:8443  # https
+      - 8001:8001  # kong管理端口
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_USER=kong
+      - KONG_PG_DATABASE=kong
+      - KONG_PG_PASSWORD=kong
+    container_name: kong
+
+  kong-dashboard:
+    image: pfinal/kong-dashboard
+    links:
+      - kong:kongadmin
+    environment:
+      - KONGADMIN_HOST=kongadmin
+      - KONGADMIN_PORT=8001
+    ports:
+      - 8081:8080
+    container_name: kong-dashboard
+
+  user:
+    image: php:7.2-apache
+    volumes:
+      - $PWD/user:/var/www/html/
+
+  product:
+    image: pfinal/flask
+    volumes:
+      - $PWD/product:/work
+
+  order:
+    build: $PWD/order
+    image: myorder
+
+  adminer:
+    image: adminer
+    ports:
+        - 8088:8080
+
+
+# docker network create --driver=overlay --attachable project1-net
+# networks:
+#   default:
+#     external:
+#       name: project1-net
+
+# dashboard: http://localhost:8081
