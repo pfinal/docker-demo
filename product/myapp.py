@@ -6,6 +6,9 @@ app = Flask(__name__)
 def home():
     return "product service"
 
+@app.route('/version')
+def create():
+    return "0.0.1"
 
 @app.route('/list')
 def create():
