@@ -10,7 +10,3 @@ services:
   order:
     image: hub:5000/order
 
-  adminer:
-    image: adminer
-    ports:
-        - 8088:8080
