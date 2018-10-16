@@ -41,25 +41,24 @@ services:
       - 8081:8080
     container_name: kong-dashboard
 
-  user:
-    image: php:7.2-apache
-    volumes:
-      - $PWD/user:/var/www/html/
+  # user:
+  #   image: php:7.2-apache
+  #   volumes:
+  #     - $PWD/user:/var/www/html/
 
-  product:
-    image: pfinal/flask
-    volumes:
-      - $PWD/product:/work
+  # product:
+  #   image: pfinal/flask
+  #   volumes:
+  #     - $PWD/product:/work
 
-  order:
-    build: $PWD/order
-    image: myorder
+  # order:
+  #   build: $PWD/order
+  #   image: myorder
 
-  adminer:
-    image: adminer
-    ports:
-        - 8088:8080
-
+  # adminer:
+  #   image: adminer
+  #   ports:
+  #       - 8088:8080
 
 # docker network create --driver=overlay --attachable project1-net
 # networks:

@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+
+  user:
+    image: hub/user
+
+  product:
+    image: hub/product
+
+  order:
+    image: hub/order
+
+  adminer:
+    image: adminer
+    ports:
+        - 8088:8080
