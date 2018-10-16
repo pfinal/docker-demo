@@ -3,10 +3,15 @@ services:
 
   user:
     image: hub:5000/user
+    ports:
+      - 5001:80
 
   product:
     image: hub:5000/product
+    ports:
+      - 5002:5000
 
   order:
     image: hub:5000/order
-
+    ports:
+      - 5003:8080
